@@ -1,0 +1,12 @@
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #282c34;
+  color: white;
+  width: 100%;
+  box-sizing: border-box; /* Include padding in the width calculation */
+  position: fixed; /* Fix the footer at the bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 1000; /* Ensure the footer is above other content */
+}

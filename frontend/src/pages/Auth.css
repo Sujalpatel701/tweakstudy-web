@@ -1,0 +1,132 @@
+/* Apply common styles to both login and register pages */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+/* Common Form Container */
+.auth-container {
+    width: 450px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent form */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(10px); /* Glass effect */
+    padding-right: 50px;
+
+
+}
+
+/* Title */
+.auth-container h2 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #fff;
+}
+
+/* Form Group */
+.auth-form-group {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.auth-form-group label {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.auth-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent inputs */
+    color: #fff;
+    outline: none;
+}
+
+/* Input Focus */
+.auth-form-group input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Form Row - Used in Register Page */
+.form-row {
+    display: flex;
+    gap: 20px; /* Space between inputs */
+    margin-bottom: 15px;
+}
+
+/* Gender Radio Buttons */
+.gender-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.gender-options label {
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Upload Profile Picture */
+.auth-form-group input[type="file"] {
+    background: transparent;
+    border: none;
+    padding: 5px;
+    color: #fff;
+}
+
+/* Button */
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #0056b3;
+}
+
+/* Register/Login link */
+.auth-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.auth-text a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-text a:hover {
+    text-decoration: underline;
+}
+
+/* Form Row - Two Fields in One Row */
+.form-row {
+    display: flex;
+    justify-content: space-between; /* Ensures spacing between fields */
+    gap: 30px; /* Increase gap for more space */
+    margin-bottom: 15px; /* Space below each row */
+}

@@ -1,0 +1,56 @@
+.about-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    padding: 0rem;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+    color: white; /* White text color */
+  }
+  
+  .about-content {
+    max-width: 800px; /* Limit the width of the content */
+    text-align: center;
+  }
+  
+  .about-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text */
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Add spacing between team members */
+    margin-top: 2rem;
+  }
+  
+  .team-member {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .team-member:hover {
+    transform: translateY(-5px); /* Lift the card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+  }
+  
+  .team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-member p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white text */
+  }

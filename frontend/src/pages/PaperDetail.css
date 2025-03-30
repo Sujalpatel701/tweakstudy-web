@@ -1,0 +1,130 @@
+/* Page Container */
+.paper-detail-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+}
+
+/* Paper Header (Subject & Year) */
+.paper-header {
+    width: 100%;
+    max-width: 1450px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* This moves button beside text */
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn {
+    background: #ff9800;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #e68900;
+}
+
+
+/* Content Layout */
+.content {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Question List Box */
+.question-list {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.question-list h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.question-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.question-list li {
+    padding: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease;
+}
+
+.question-list li:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Solution Box */
+.solution-box {
+    width: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.solution-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.solution-box p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .question-list, .solution-box {
+        width: 100%;
+    }
+
+    .paper-header {
+        font-size: 16px;
+        padding: 8px;
+    }
+}

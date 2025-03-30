@@ -1,0 +1,111 @@
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+  padding: 2rem;
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+  color: white; /* White text color */
+}
+
+.contact-content {
+  max-width: 800px; /* Limit the width of the content */
+  width: 100%; /* Ensure it takes full width */
+  text-align: center;
+}
+
+.contact-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text */
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Add spacing between info items */
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-5px); /* Lift the card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+}
+
+.info-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-item p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8); /* Slightly transparent white text */
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text */
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  color: white; /* White text color */
+  font-size: 1rem;
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 150px; /* Set a minimum height for the textarea */
+}
+
+.submit-button {
+  display: block; /* Make the button a block element */
+  width: 100%; /* Full width */
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  color: #282c34;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #4fa3c7;
+  transform: scale(1.05); /* Slightly scale up the button on hover */
+}

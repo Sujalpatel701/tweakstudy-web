@@ -1,0 +1,36 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+  }
+  
+  /* Fixed header at the top */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the header is above other content */
+  }
+  
+  /* Scrollable content area */
+  .hero {
+    flex: 1; /* Take up remaining space */
+    margin-top: 60px; /* Add margin to account for the fixed header */
+    margin-bottom: 60px; /* Add margin to account for the fixed footer */
+    padding: 1rem 2rem; /* Add padding for better spacing */
+    overflow-y: auto; /* Make the content scrollable */
+  }
+  
+  /* Fixed footer at the bottom */
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the footer is above other content */
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
