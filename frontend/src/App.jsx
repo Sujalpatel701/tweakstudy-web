@@ -9,7 +9,7 @@ import SubjectDetail from './pages/SubjectDetail';
 import Login from './pages/Login'; 
 import Register from './pages/Register'; 
 import PaperDetail from './pages/PaperDetail';
-import TopicView from './pages/TopicView';  // Import TopicView Page
+import TopicView from './pages/TopicView';  
 
 function App() {
   return (

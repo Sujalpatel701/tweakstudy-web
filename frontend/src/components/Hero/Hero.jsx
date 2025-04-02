@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Import Axios
 import './Hero.css';
 import Tagline from '../Tagline/Tagline';
 import logo from './logo.png';
-import subjects from './subjects'; // Import the subjects data
 
 const Hero = () => {
   const navigate = useNavigate();
+  const [subjects, setSubjects] = useState([]); // State to store subjects
+
+  useEffect(() => {
+    // Fetch subjects from the API
+    axios.get('http://localhost:5000/api/subject')
+      .then((response) => {
+        setSubjects(response.data); // Update state with API data
+      })
+      .catch((error) => {
+        console.error('Error fetching subjects:', error);
+      });
+  }, []);
 
   const handleSubjectClick = (id) => {
     navigate(`/subject/${id}`);
