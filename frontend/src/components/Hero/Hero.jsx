@@ -7,13 +7,11 @@ import logo from './logo.png';
 
 const Hero = () => {
   const navigate = useNavigate();
-  const [subjects, setSubjects] = useState([]); // State to store subjects
-
+  const [subjects, setSubjects] = useState([]); 
   useEffect(() => {
-    // Fetch subjects from the API
     axios.get('http://localhost:5000/api/subject')
       .then((response) => {
-        setSubjects(response.data); // Update state with API data
+        setSubjects(response.data); 
       })
       .catch((error) => {
         console.error('Error fetching subjects:', error);
