@@ -24,7 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/subject/:subjectId/paper/:paperYear" element={<PaperDetail />} />
-          <Route path="/subject/:subjectId/topic/:topicName" element={<TopicView />} /> {/* New Route */}
+          <Route path="/subject/:subjectId/topic/:topicId" element={<TopicView />} /> {/* Updated Route */}
         </Routes>
         <Footer />
       </div>

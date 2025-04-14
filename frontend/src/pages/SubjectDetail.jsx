@@ -64,7 +64,7 @@ const SubjectDetail = () => {
                             <li 
                                 key={topic.id} 
                                 className="topic-item" 
-                                onClick={() => navigate(`/subject/${subject.id}/topic/${encodeURIComponent(topic.topic_name)}`)}
+                                onClick={() => navigate(`/subject/${subject.id}/topic/${topic.id}`)} // Pass topic.id here
                             >
                                 {topic.topic_name}
                             </li>
