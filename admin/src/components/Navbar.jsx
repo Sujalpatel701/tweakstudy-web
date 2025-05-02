@@ -1,39 +1,22 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './navbar.css';
 
 const Navbar = () => {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
+
+  // Map pathname to display name
+  const routeNameMap = {
+    '/dashboard': 'Dashboard',
+    '/user': 'User',
+    '/subject': 'Subject',
+  };
+
+  const currentRouteName = routeNameMap[location.pathname] || 'Home';
 
   return (
     <div className="navbar">
-      <h2>Current Route: {location.pathname}</h2>
-      <ul>
-        <li>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Dashboard
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/user"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            User
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/subject"
-            className={({ isActive }) => (isActive ? 'active' : '')}
-          >
-            Subject
-          </NavLink>
-        </li>
-      </ul>
+      <h2>{currentRouteName}</h2>
     </div>
   );
 };

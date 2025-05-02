@@ -9,6 +9,8 @@
   color: white;
   padding: 44px;
   box-sizing: border-box;
+
+  overflow-y: auto; /* 🔥 Enables scrolling if content overflows */
 }
 
 .subject-detail-content {
@@ -49,6 +51,9 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  max-height: 600px; /* Optional: make panel scrollable */
+  overflow-y: auto;
 }
 
 .panel:hover {
@@ -63,23 +68,28 @@
   color: white;
 }
 
-.topics-list, .paper-sets-list {
+.topics-list,
+.paper-sets-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.topic-item, .paper-set-item {
+.topic-item,
+.paper-set-item {
   padding: 12px;
   margin: 8px 0;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: white;
   font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.topic-item:hover, .paper-set-item:hover {
+.topic-item:hover,
+.paper-set-item:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateX(5px);
 }
@@ -99,37 +109,39 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .panels-container {
-      flex-direction: column;
-      gap: 15px;
+    flex-direction: column;
+    gap: 15px;
   }
 
   .panel {
-      width: 100%;
+    width: 100%;
   }
 
   .subject-title {
-      font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .subject-description {
-      font-size: 1.2rem;
-      max-width: 90%;
+    font-size: 1.2rem;
+    max-width: 90%;
   }
 }
 
-.topic-item {
-  padding: 12px;
-  margin: 8px 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  color: white;
-  font-size: 1.2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+/* Hide scrollbars in WebKit (Chrome, Safari) */
+.panel::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
-.topic-item:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateX(5px);
+/* Hide scrollbars in Firefox */
+.panel {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbars in IE/Edge */
+.panel {
+  -ms-overflow-style: none;
+}
+.panel {
+  scroll-behavior: smooth;
 }

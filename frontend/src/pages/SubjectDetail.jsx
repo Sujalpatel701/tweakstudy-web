@@ -8,31 +8,31 @@ const SubjectDetail = () => {
     const navigate = useNavigate();
     const [subject, setSubject] = useState(null);
     const [topics, setTopics] = useState([]);
+    const [paperSets, setPaperSets] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    const staticPaperSets = [
-        { year: '2023' },
-        { year: '2022' },
-        { year: '2021' }
-    ];
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const subjectRes = await axios.get(`http://localhost:5000/api/subject/${id}`);
-                const topicRes = await axios.get(`http://localhost:5000/api/topic`);
+                const [subjectRes, topicRes, paperRes] = await Promise.all([
+                    axios.get(`http://localhost:5000/api/subject/${id}`),
+                    axios.get(`http://localhost:5000/api/topic`),
+                    axios.get(`http://localhost:5000/api/exampaper`)
+                ]);
 
                 setSubject(subjectRes.data);
 
-                // Filter topics belonging to this subject
-                const filteredTopics = topicRes.data.filter((t) => t.sub_id === parseInt(id));
+                const filteredTopics = topicRes.data.filter(t => t.sub_id === parseInt(id));
                 setTopics(filteredTopics);
+
+                const filteredPapers = paperRes.data.filter(p => p.sub_id === parseInt(id) && p.name?.length > 5);
+                setPaperSets(filteredPapers);
 
                 setLoading(false);
             } catch (err) {
                 console.error(err);
-                setError('Failed to load subject or topics');
+                setError('Failed to load subject, topics, or paper sets');
                 setLoading(false);
             }
         };
@@ -64,7 +64,7 @@ const SubjectDetail = () => {
                             <li 
                                 key={topic.id} 
                                 className="topic-item" 
-                                onClick={() => navigate(`/subject/${subject.id}/topic/${topic.id}`)} // Pass topic.id here
+                                onClick={() => navigate(`/subject/${subject.id}/topic/${topic.id}`)} 
                             >
                                 {topic.topic_name}
                             </li>
@@ -76,13 +76,13 @@ const SubjectDetail = () => {
                 <div className="panel">
                     <h2 className="panel-title">Paper Sets</h2>
                     <ul className="paper-sets-list">
-                        {staticPaperSets.map((paper, index) => (
+                        {paperSets.map((paper) => (
                             <li 
-                                key={index} 
+                                key={paper.id} 
                                 className="paper-set-item"
-                                onClick={() => navigate(`/subject/${subject.id}/paper/${paper.year}`)}
+                                onClick={() => navigate(`/subject/${subject.id}/paper/${paper.year}?exam_id=${paper.id}`)}
                             >
-                                {paper.year} Paper Set
+                                {paper.name}
                             </li>
                         ))}
                     </ul>

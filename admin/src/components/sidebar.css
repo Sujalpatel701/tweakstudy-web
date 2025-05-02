@@ -4,32 +4,61 @@
   color: white;
   height: 100vh;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-.sidebar h2 {
-  margin-bottom: 20px;
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;       /* makes it circular */
+  object-fit: cover;        /* ensures image fills the circle without distortion */
+  border: 2px solid #ccc;   /* optional: border around the circle */
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Navigation list styles */
 .sidebar ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar ul li {
-  margin: 15px 0;
+  margin: 10px 0;
 }
 
+/* NavLink styles */
 .sidebar ul li a {
   color: white;
   text-decoration: none;
   font-size: 1.1em;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
 }
 
 .sidebar ul li a:hover {
-  text-decoration: underline;
+  background-color: #34495e; /* subtle background on hover */
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .sidebar ul li a.active {
+  background-color: #1abc9c; /* highlight color for active link */
+  color: white;
   font-weight: bold;
-  color: #3498db; /* Highlight color for active link */
 }

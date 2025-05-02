@@ -1,25 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./PaperDetail.css";
-import samplePaper from "../assets/sample-paper.pdf";
-
-const questions = [
-    { id: 1, question: "What is a programming language?", solution: "A programming language is a set of instructions used to communicate with a computer. Examples: Python, Java, C++." },
-    { id: 2, question: "Explain different types of loops in programming.", solution: "Loops in programming include for loop, while loop, and do-while loop. They help execute repetitive tasks." },
-    { id: 3, question: "What is an algorithm?", solution: "An algorithm is a step-by-step procedure to solve a problem. Example: Sorting algorithms like Bubble Sort and Merge Sort." },
-    { id: 4, question: "Define variables and data types.", solution: "Variables store data, and data types define the kind of data a variable can hold (e.g., int, float, string)." },
-    { id: 5, question: "Write a program to reverse a string.", solution: "Python example:\n\ns = 'hello'\nprint(s[::-1])" },
-];
 
 const PaperDetail = () => {
     const { subjectId, paperYear } = useParams();
+    const [questions, setQuestions] = useState([]);
+    const [answers, setAnswers] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [betterAnswer, setBetterAnswer] = useState("");
+    const [paperInfo, setPaperInfo] = useState(null); // store paper file info
+
+    // Fetch questions
+    useEffect(() => {
+        const fetchQuestions = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/examquestion?paperId=${subjectId}`);
+                const data = await response.json();
+                setQuestions(data);
+            } catch (error) {
+                console.error("Error fetching questions:", error);
+            }
+        };
+
+        fetchQuestions();
+    }, [subjectId]);
+
+    // Fetch answers
+    useEffect(() => {
+        const fetchAnswers = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/api/examanswer");
+                const data = await response.json();
+                setAnswers(data);
+            } catch (error) {
+                console.error("Error fetching answers:", error);
+            }
+        };
+
+        fetchAnswers();
+    }, []);
+
+    // Fetch paper info for download
+    useEffect(() => {
+        const fetchPaperInfo = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/exampaper/${subjectId}`);
+                const data = await response.json();
+                setPaperInfo(data);
+            } catch (error) {
+                console.error("Error fetching paper info:", error);
+            }
+        };
+
+        fetchPaperInfo();
+    }, [subjectId]);
 
     const handleDownload = () => {
+        if (!paperInfo || !paperInfo.file) {
+            alert("Download file not available.");
+            return;
+        }
+
+        const fileUrl = `http://localhost:5000/api/exampaper/download/${paperInfo.file}`;
         const link = document.createElement("a");
-        link.href = samplePaper;
-        link.setAttribute("download", "Sample-Paper.pdf");
+        link.href = fileUrl;
+        link.setAttribute("download", paperInfo.file);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -35,7 +80,12 @@ const PaperDetail = () => {
 
     const handleSubmit = () => {
         alert(`Your better answer: ${betterAnswer}`);
-        setBetterAnswer(""); 
+        setBetterAnswer("");
+    };
+
+    const findAnswerForQuestion = (questionId) => {
+        const answer = answers.find((answer) => answer.que_id === questionId);
+        return answer ? answer.ans : "Answer not available.";
     };
 
     return (
@@ -57,7 +107,7 @@ const PaperDetail = () => {
                                 className={index === selectedIndex ? "active" : ""}
                                 onClick={() => setSelectedIndex(index)}
                             >
-                                {q.question}
+                                <div dangerouslySetInnerHTML={{ __html: q.question }} />
                             </li>
                         ))}
                     </ul>
@@ -65,7 +115,10 @@ const PaperDetail = () => {
 
                 <div className="solution-box">
                     <h2>Solution</h2>
-                    <p>{questions[selectedIndex].solution}</p>
+                    <p>{questions[selectedIndex] ? questions[selectedIndex].solution : "Solution is not available."}</p>
+
+                    <h3>Answer</h3>
+                    <div dangerouslySetInnerHTML={{ __html: findAnswerForQuestion(questions[selectedIndex]?.id) }} />
 
                     <div className="navigation-buttons">
                         <button onClick={handlePrevious} disabled={selectedIndex === 0}>
